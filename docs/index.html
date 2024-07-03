@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.551">
 
   <meta name="author" content="André Vitor Pereira de Melo">
-  <title>quarto-input52d1a1fd</title>
+  <title>quarto-input3b6a5194</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -466,8 +466,8 @@ André Vitor Pereira de Melo
 </div>
 <div class="fragment fade-in">
 <p style="color: #028DB7">
-</p><p>Siga as instruções fornecidas nos instaladores para completar o processo de instalação.</p>
-<p></p>
+Siga as instruções fornecidas nos instaladores para completar o processo de instalação.
+</p>
 </div>
 </div><div class="column" style="width:50%;">
 <p><img data-src="logo/rstudio_logo.png" class="absolute" style="height: 150px; "><br>
@@ -484,8 +484,8 @@ André Vitor Pereira de Melo
 </div>
 <div class="fragment fade-in">
 <p style="color: #028DB7">
-</p><p>Necessário realizar <strong>login</strong> (através de uma conta Google, Github, entre outros) para acessar o RStudio Cloud.</p>
-<p></p>
+Necessário realizar <strong>login</strong> (através de uma conta Google, Github, entre outros) para acessar o RStudio Cloud.
+</p>
 </div>
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/rstudio_cloud.png" class="absolute border shadow-border" style="height: 300px; "></p>
@@ -1196,7 +1196,7 @@ André Vitor Pereira de Melo
 </section>
 <section id="loop" class="slide level2 center">
 <h2>Loop</h2>
-<p>Estruturas de repetição, ou <code>loops</code>, são fundamentais na programação para executar um bloco de código várias vezes.</p>
+<p>Estruturas de repetição, ou <em>loops</em>, são fundamentais na programação para executar um bloco de código várias vezes.</p>
 <ul>
 <li class="fragment">Estrutura <code>for</code></li>
 </ul>
@@ -1290,8 +1290,8 @@ André Vitor Pereira de Melo
 <span id="cb76-2"><a href=""></a></span>
 <span id="cb76-3"><a href=""></a>y2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] b    b    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; a    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; a   
-Levels: a b d e</code></pre>
+<pre><code> [1] c    c    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; a    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; a   
+Levels: a c d e</code></pre>
 </div>
 </div>
 </div>
@@ -1679,7 +1679,7 @@ Levels: a b d e</code></pre>
 <div class="quarto-auto-generated-content">
 <p><img src="logo/ufdpar_logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
-
+<p><a href="https://github.com/drewmelo/introducao-R">https://github.com/drewmelo/introducao-R</a></p>
 </div>
 </div>
 </section></section>
@@ -1899,26 +1899,24 @@ Levels: a b d e</code></pre>
       }
     </style>
 
-
     <script>
-      function remove() {
-        let footer = document.querySelector('div.footer');
+      function hideSlideNumber() {
         let slideNo = document.querySelector('div.slide-number');
         slideNo.classList.add('hide');
-        footer.classList.add('hide');
-
-        Reveal.on('slidechanged', event => {
-          if(Reveal.isFirstSlide()) {
-            slideNo.classList.add('hide');
-            footer.classList.add('hide');
-          } else {
-            slideNo.classList.remove('hide');
-            footer.classList.remove('hide');
-          }
-        });
       }
 
-      window.onload = remove();
+      window.onload = function() {
+        hideSlideNumber();
+
+        Reveal.on('slidechanged', event => {
+          let slideNo = document.querySelector('div.slide-number');
+          if (Reveal.isFirstSlide()) {
+            slideNo.classList.add('hide');
+          } else {
+            slideNo.classList.remove('hide');
+          }
+        });
+      };
     </script>
     
 

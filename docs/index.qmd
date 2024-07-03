@@ -12,6 +12,7 @@ format:
   revealjs: 
     theme: [default, custom.scss]
     logo: logo/ufdpar_logo.png
+    footer: "[https://github.com/drewmelo/introducao-R](https://github.com/drewmelo/introducao-R)"
     slide-number: true
     smaller: true
     scrollable: false
@@ -62,9 +63,7 @@ Visite [RStudio Desktop](https://download1.rstudio.org/electron/windows/RStudio-
 
 ::: {.fragment .fade-in}
 <p style="color: #028DB7">
-
 Siga as instruções fornecidas nos instaladores para completar o processo de instalação.
-
 </p>
 :::
 :::
@@ -85,9 +84,7 @@ Visite a [Posit Cloud](https://posit.cloud/) para acessar e utilizar o RStudio s
 
 ::: {.fragment .fade-in}
 <p style="color: #028DB7">
-
 Necessário realizar **login** (através de uma conta Google, Github, entre outros) para acessar o RStudio Cloud.
-
 </p>
 :::
 :::
@@ -736,7 +733,7 @@ if (x < y || y < 0) {
 
 ## Loop {.center}
 
-Estruturas de repetição, ou `loops`, são fundamentais na programação para executar um bloco de código várias vezes.
+Estruturas de repetição, ou *loops*, são fundamentais na programação para executar um bloco de código várias vezes.
 
 -   Estrutura `for`
 
