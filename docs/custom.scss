@@ -1,0 +1,31 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+$presentation-heading-color:  #00263A;
+$presentation-heading-text-transform: uppercase;
+$presentation-heading-font-weight: 500;
+$link-color: #028DB7;
+$presentation-title-slide-text-align: left;
+$code-block-font-size:  0.6em;
+$presentation-font-smaller: .8;
+
+.title-slide-bg {
+  background-color: #4CAF50 !important; /* Exemplo de cor de fundo */
+  color: white !important; /* Cor do texto */
+}
+
+/* Sombreado em imagens */
+.shadow-border {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 8px; /* opcional: adiciona bordas arredondadas */
+}
+
+.center-text {
+  text-align: center;
+}
+

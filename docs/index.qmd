@@ -1,0 +1,1122 @@
+---
+title: |
+  <div style="display: flex; align-items: center;">
+    Introdução ao <img src="logo/r_logo.png" style="margin-left: -30px; height: 125px; margin-bottom: -20px;">
+  </div>
+author: "André Vitor Pereira de Melo"
+subtitle: "Universidade Federal do Delta do Parnaíba"
+date: today
+date-format: long
+lang: pt-BR
+format: 
+  revealjs: 
+    theme: [default, custom.scss]
+    logo: logo/ufdpar_logo.png
+    slide-number: true
+    smaller: true
+    scrollable: false
+    incremental: true
+    preview-links: true
+    background: 
+      class: "title-slide-bg"
+    include-after-body: title/clean_title_page.html
+editor: visual
+---
+
+# I - Introdução Geral
+
+## O que é a linguagem R? {.center .nonincremental}
+
+-   Linguagem Estatística e Computacional;
+    -   R é uma linguagem de programação orientada a objetos projetada para **análise estatística** e computacional de dados.
+-   Flexibilidade e Aplicações;
+    -   Oferece flexibilidade, principalmente funcional, para realizar **manipulações de grandes volumes de dados**, sendo útil na era do *big data*.
+-   Tipagem Fraca.
+    -   Permite operações entre diferentes tipos de dados sem a necessidade explícita de conversão.
+
+## Por que usar o R? {.center .nonincremental}
+
+-   Visualização e Análise de Dados;
+    -   Esta linguagem facilita a criação de gráficos e visualizações de dados detalhados, essenciais para explorar padrões e **comunicar resultados de forma clara**.
+-   *Open-source*.
+    -   Por ser um *software* de código aberto, possui uma comunidade ativa que **desenvolve e compartilha pacotes**, permitindo uma vasta gama de aplicações e suporte colaborativo.
+
+## O que é o RStudio? {.center .nonincremental}
+
+-   Ambiente de Desenvolvimento Integrado (IDE);
+    -   RStudio é um ambiente de desenvolvimento integrado projetado especificamente para trabalhar com a linguagem R.
+-   Suas vantagens.
+    -   Facilita o desenvolvimento e análise de código R com recursos como edição de scripts, **gerenciamento de projetos e depuração integrada**.
+
+## Passos da instalação {.center}
+
+::: columns
+::: {.column width="50%"}
+::: {.fragment .fade-in-then-semi-out}
+Visite [CRAN - The Comprehensive R Archive Network](https://cran.r-project.org/bin/windows/base/R-4.4.1-win.exe) e baixe a linguagem, através de um arquivo executável, para seu sistema operacional;
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+Visite [RStudio Desktop](https://download1.rstudio.org/electron/windows/RStudio-2024.04.2-764.exe) e baixe o instalador para seu sistema operacional;
+:::
+
+::: {.fragment .fade-in}
+<p style="color: #028DB7">
+
+Siga as instruções fornecidas nos instaladores para completar o processo de instalação.
+
+</p>
+:::
+:::
+
+::: {.column width="50%"}
+![](logo/rstudio_logo.png){.absolute height="150"}\
+![](logo/r_logo.png){.absolute height="200" bottom="50px"}
+:::
+:::
+
+## RStudio Cloud {.center .nonincremental}
+
+::: columns
+::: {.column width="50%"}
+::: {.fragment .fade-in-then-semi-out}
+Visite a [Posit Cloud](https://posit.cloud/) para acessar e utilizar o RStudio sem a necessidade de instalação local;
+:::
+
+::: {.fragment .fade-in}
+<p style="color: #028DB7">
+
+Necessário realizar **login** (através de uma conta Google, Github, entre outros) para acessar o RStudio Cloud.
+
+</p>
+:::
+:::
+
+::: {.column width="50%"}
+![](images/rstudio_cloud.png){.absolute .border .shadow-border height="300"}
+:::
+:::
+
+## Definição de Diretório {.center .nonincremental}
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Primeiramente, através da função `getwd()`, podemos verificar o diretório de trabalho atual.
+
+::: fragment
+```{r, results='hide', eval=FALSE}
+getwd()
+```
+:::
+
+::: fragment
+Também podemos utilizar `setwd()` para definir um novo diretório de trabalho.
+
+```{r, results='hide', eval=FALSE}
+setwd("/Faculdade/Rstudio/Minicursos/Introdução ao R/introducao-r/")
+```
+:::
+
+::: fragment
+E listando os arquivos no diretório de trabalho atual, temos:
+
+```{r, results='hide'}
+list.files()
+```
+:::
+
+## Pacotes {.center}
+
+Os pacotes no R são coleções de funções e conjuntos de dados desenvolvidos pela comunidade.
+
+::: fragment
+```{r, results='hide', eval=FALSE}
+# Instalando o pacote
+install.packages("tidyverse", dependencies = TRUE)
+
+# Ativando o pacote
+library(tidyverse)
+```
+:::
+
+::: fragment
+E para descarregar ou remover pacotes:
+
+```{r, results='hide', eval=FALSE}
+# Desativar pacotes
+detach("tidyverse")
+
+# Desinstalar pacotes
+remove.packages("pacotes")
+```
+:::
+
+## Um pouco sobre tidyverse {.center .noincremental}
+
+::: {style="text-align: center; margin-top: 1em"}
+![](images/tidyverse_circle.png){height="400"}
+:::
+
+## Um pouco sobre tidyverse {.center visibility="uncounted"}
+
+O `tidyverse` oferece uma alternativa aos métodos base do R para análise de dados em dados organizados de forma “arrumada” (*tidy data*).
+
+::: fragment
+```{r, message=F, eval=FALSE}
+library(tidyverse)
+```
+:::
+
+::: fragment
+```{r, message=TRUE, echo=FALSE}
+library(tidyverse)
+```
+:::
+
+## Operador pipe {.center}
+
+O operador pipe no R é uma ferramenta poderosa para encadear operações e facilitar a leitura e escrita de código. Existem dois operadores de pipe comuns:
+
+-   Operador `%>%` (pipe do pacote `magrittr`)
+    -   O operador `%>%` é usado para encadear funções, passando o resultado de uma função como argumento para a próxima função.
+-   Operador `|>` (pipe do pacote base)
+    -   Introduzido no R 4.1.0, o operador pipe nativo `|>` é uma alternativa ao operador do `magrittr`, oferencendo uma maneira semelhante de encadear operações.
+
+## R como calculadora {.center}
+
+A linguagem R nos permite realizar cálculos simples e complexos, fornecendo operações aritméticas como adição, subtração, multiplicação, divisão e outras operações matemáticas.
+
+::: fragment
+```{r}
+# Operações Combinadas
+(5 + 3) * 2 - 4 / 2
+```
+:::
+
+-   Potência
+
+::: fragment
+```{r}
+2^3
+```
+:::
+
+## R como calculadora {.center visibility="uncounted"}
+
+-   Módulo
+
+::: fragment
+```{r}
+10 %% 3
+```
+:::
+
+-   Divisão inteira
+
+::: fragment
+```{r}
+10 %/% 3
+```
+:::
+
+-   Raiz Quadrada
+
+::: fragment
+```{r}
+sqrt(16)
+```
+:::
+
+# II - Estrutura de Dados
+
+## Tipos de estruturas de dados {.center .noincremental}
+
+::: columns
+::: {.column width="50%"}
+::: {.fragment .fade-in-then-semi-out}
+Na linguagem R, há várias estruturas de dados fundamentais que são usadas para armazenar e manipular informações de maneiras específicas.
+:::
+
+-   **Vetores**: Unidimensionais;
+-   **Matrizes**: Bidimensionais;
+-   **Data Frames**: Bidimensionais;
+-   **Arrays**: Multidimensionais;
+-   **Listas**: Flexíveis.
+:::
+
+::: {.column width="50%"}
+![](images/estruturas_de_dados.png){.absolute .border .shadow-border width="500" heigth="500"}
+:::
+:::
+
+## Tipos de estruturas de dados {.center .nonincremental visibility="uncounted"}
+
+::: {style="text-align: center; margin-top: 1em"}
+![](images/datatypes_dataframes.png){height="400"}
+:::
+
+## O que são vetores? {.center .nonincremental}
+
+Um vetor é uma estrutura de dados que contém elementos do mesmo tipo. Pode ser numérico, de caracteres, lógico, etc.
+
+::: fragment
+```{r}
+#| code-line-numbers: "|2|5|8|11|"
+# Vetor numérico (inteiro)
+a <- c(1:5)
+
+# Vetor de caracteres
+b <- c("a", "b", "c", "d", "e")
+
+# Vetor lógico
+c <- c(T, T, F, F, T)
+
+# Vetor númerico (números reais)
+d <- c(1.12, 2.32, 3.41, 4.03, 5.98)
+```
+:::
+
+## Principais classes de dados
+
+::: columns
+::: {.column width="30%"}
+-   numeric;
+-   integer;
+-   character;
+-   logical;
+-   complex;
+-   raw;
+-   list.
+:::
+
+::: {.column width="70%"}
+::: fragment
+Quando se mistura diferentes tipos de dados em uma operação, o R usa uma **hierarquia de coerção** para determinar como converter **estes dados**.
+
+::: {.fragment .center-text}
+logical ➡ integer ➡ numeric ➡ complex ➡ character
+:::
+
+::: fragment
+Por exemplo, pode-se utilizar `class` para verificar a classe dos dados.
+
+```{r}
+class(a)
+
+class(b)
+
+class(c)
+
+class(d)
+```
+:::
+:::
+:::
+:::
+
+## Conversão de classes de dados {visibility="uncounted"}
+
+::: fragment
+Também podemos converter objetos (ou vetores) de uma classe para outra. Utilizaremos o exemplo do objeto `c` que está como `logical`, para `numeric`.
+
+```{r}
+c2 <- as.numeric(c)
+
+c2
+```
+:::
+
+::: fragment
+Ou, neste caso, podemos tornar o objeto `a`, naturalmente definido como `numeric`, em `character`.
+
+```{r}
+a2 <- as.character(a)
+
+a2
+```
+:::
+
+-   Funções de coerção
+    -   Além de `as.numeric()` e `as.character()`, existem também `as.integer()`, `as.factor()`, `as.complex()`, entre outras.
+
+## Principais tipos de dados {.center .nonincremental}
+
+::: columns
+::: {.column width="30%"}
+-   double;
+-   integer;
+-   character;
+-   logical;
+-   complex;
+-   raw;
+-   list;
+-   NULL;
+-   closure.
+:::
+
+::: {.column width="70%"}
+::: fragment
+Com a função `typeof` podemos visualizar a classe de cada vetor.
+
+```{r}
+typeof(a)
+```
+
+```{r}
+typeof(b)
+```
+
+```{r}
+typeof(c)
+```
+
+```{r}
+typeof(d)
+```
+:::
+:::
+:::
+
+## O que são data frames? {.center .noincremental}
+
+Os *data frames* são estruturas de dados fundamentais no R, muito utilizadas para **armazenar conjuntos de dados tabulares**, onde as colunas podem conter **diferentes tipos de classes** (numéricos, caracteres, lógicos, etc.).
+
+-   Quanto a sua estrutura, temos:
+    -   **Nome das Colunas (variáveis):** Cada coluna em um *data frame* tem um nome que a identifica, representando seus respectivos atributos;
+    -   **Rótulos de Linhas (observações):** As linhas podem ser rotuladas para identificar cada observação de maneira única ou significativa.
+
+## O que são data frames? {.center visibility="uncounted"}
+
+::: {style="text-align: center; margin-top: 1em"}
+![](images/schema_data.png){height="450"}
+:::
+
+## Criando data frames {.center}
+
+Podemos combinar os objetos `a`, `b`, `c` e `d` em um *data frame*.
+
+::: fragment
+```{r}
+base <- data.frame(
+  a = a, b = b, c = c, d = d
+)
+
+base
+```
+:::
+
+## Criando data frames {.center visibility="uncounted"}
+
+Ou podemos criar um novo, conforme o código abaixo:
+
+::: fragment
+```{r}
+#| code-line-numbers: "|2-5"
+df <- data.frame(
+  nome = c("Darth Vader", "Luke Skywalker", "Leia Organa", "Obi-Wan Kenobi"),
+  altura = c(202, 172, 150, 182),
+  massa = c(136, 77, 49, 77),
+  genero = c("Masculino", "Masculino", "Feminino", "Masculino")
+)
+
+df
+```
+:::
+
+## Data frames modernizados {.center}
+
+*Tibbles* são data frames modernizados, introduzidos pelo pacote `tibble` no `tidyverse`. Eles foram projetados para corrigir algumas das limitações dos *data frames* tradicionais e para melhorar a usabilidade.
+
+::: fragment
+```{r}
+dados <- tibble::as_tibble(df)
+
+dados
+```
+:::
+
+## Operações em data frames {.center}
+
+Agora, iremos categorizar a coluna `altura` de `dados` em Muito Alto, Alto, Médio e Baixo.
+
+::: fragment
+```{r}
+porte <- c("Muito Alto", "Médio", "Baixo", "Alto")
+```
+:::
+
+::: fragment
+Em seguida, tornaremos o objeto `porte` em fator:
+
+```{r}
+porte_level <- factor(porte, levels = c("Baixo", "Médio", "Alto", "Muito Alto"),
+                labels = c("Baixo", "Médio", "Alto", "Muito Alto"),
+                ordered = T)
+```
+:::
+
+::: fragment
+Adicionando o novo vetor criado aos dados.
+
+```{r}
+dados$porte <- porte_level
+
+dados
+```
+:::
+
+## Operações em data frames {.center visibility="uncounted"}
+
+Para testarmos, podemos ordenar os dados com base na nova coluna criada, através do pacote `dplyr`.
+
+::: fragment
+```{r}
+dados |>
+  dplyr::arrange(desc(porte))
+```
+:::
+
+## Dados nativos do R
+
+O R vem com vários conjuntos de *data frames* nativos, que estão disponíveis para **uso imediato**. Esses conjuntos de dados são fornecidos principalmente pelo pacote `datasets`, que é **carregado automaticamente quando você inicia uma sessão R**.
+
+::: fragment
+Você pode listar todos os conjuntos de dados disponíveis no pacote `datasets` usando a função `data()`.
+
+```{r, results='hide', eval=FALSE}
+data(package = "datasets")
+```
+:::
+
+-   Principais conjuntos de dados:
+    -   airquality
+    -   mtcars
+    -   cars
+    -   iris
+
+## Criando listas {.center}
+
+Uma lista é uma coleção ordenada de elementos que podem ser de diferentes tipos. Diferente de vetores, que só podem conter elementos de um único tipo, listas podem armazenar números, caracteres, vetores, outras listas e até funções.
+
+::: fragment
+```{r}
+lista <- list(
+            dados,
+            hobbies = c("Leitura", "Esportes", "Música"),
+            matriz = matrix(1:9, nrow = 3, dimnames = list(c('A', 'B', 'C'),
+                                                           c('A', 'B', 'C'))),
+            cars = head(cars, 5),
+            mtcars = head(mtcars, 5)
+          )
+```
+:::
+
+## Criando listas {.center visibility="uncounted"}
+
+Dessa forma, a `lista` criada estará nesse formato:
+
+::: {style="text-align: center;"}
+![](images/rstudio_screenshot1.png){.border .shadow-border height="450"}
+:::
+
+## Exportação de dados {.center}
+
+Exportar dados é uma tarefa comum no R, especialmente quando se deseja salvar resultados de análises ou compartilhar informações com outros usuários.
+
+**1.** Exportando para CSV
+
+::: fragment
+```{r, eval=FALSE}
+write.csv(dados, file = "dados/dados.csv", row.names = FALSE)
+```
+:::
+
+**2.** Exportando para Excel (*xlsx*)
+
+::: fragment
+```{r, eval=FALSE}
+write.xlsx(dados, file = "dados/dados.xlsx", rowNames = FALSE)
+```
+:::
+
+**3.** Exportando para Texto (*txt*)
+
+::: fragment
+```{r, eval=FALSE}
+write.table(dados, file = "dados/dados.txt", sep = "\t", row.names = FALSE)
+```
+:::
+
+## Exportação de dados {.center}
+
+Neste caso, ao importar dados no R, estaremos carregando conjuntos de dados externos para análise, manipulação e visualização.
+
+**1.** Importando para CSV
+
+::: fragment
+```{r, eval=FALSE}
+readr::read_csv(file = "dados/dados.csv")
+```
+:::
+
+**2.** Importando para Excel (*xlsx*)
+
+::: fragment
+```{r, eval=FALSE}
+# Ativando o pacote
+library(readxl)
+
+readxl::read_excel(path = "dados/dados.xlsx")
+```
+:::
+
+**3.** Importando para Texto (*txt*)
+
+::: fragment
+```{r, eval=FALSE}
+read.table(file = "dados/dados.txt", header = TRUE, sep = "\t")
+```
+:::
+
+## Exercício de Fixação 1 {.center}
+
+Considere os seguintes vetores em R, modificados para incluir uma mistura de diferentes tipos de valores. Para cada vetor, determine qual é a classe predominante dos dados:
+
+-   Vetor A
+
+::: fragment
+```{r, results='hide'}
+A <- c(TRUE, 10, 3.4, 6, 1L)
+```
+:::
+
+::: fragment
+```{r, echo=FALSE}
+class(A)
+```
+:::
+
+-   Vetor B
+
+::: fragment
+```{r, results='hide'}
+B <- c(0, 1, 1, 0, 0)
+```
+:::
+
+::: fragment
+```{r, echo=FALSE}
+class(B)
+```
+:::
+
+-   Vetor C
+
+::: fragment
+```{r, results='hide'}
+C <- c(NA, 8L, F, "a", 2i)
+```
+:::
+
+::: fragment
+```{r, echo=FALSE}
+class(C)
+```
+:::
+
+## Exercício de Fixação 2 {.center}
+
+-   Considere os dados a seguir para cinco funcionários de uma empresa:
+    -   Nome: Ana, João, Luna, Pedro, Sofia
+    -   Idade: 28, 32, 25, 29, 31
+    -   Salário: 3500, 3800, 3200, 4000, 3700
+
+::: fragment
+A partir dessas informações, crie um data frame chamado `funcionarios` e adicione uma nova coluna chamada `bonus` que representa o bônus de cada funcionário, sendo 5% do salário.
+:::
+
+# III - Estrutura de Condição e Repetição
+
+## Operadores lógicos {.center}
+
+::: {.fragment .fade-in-then-semi-out}
+As operações lógicas (ou *booleanas*), utilizadas para retornar valores `TRUE` ou `FALSE`, são fundamentais para **controle de fluxo, filtragem de dados**, e muitos outros aspectos da programação em R.
+:::
+
+::: fragment
+-   Principais Operadores Lógicos:
+    -   **AND** (`&` e `&&`);
+    -   **OR** (`|` e `||`);
+    -   **NOT** (`!`).
+:::
+
+## Operadores lógicos {.center visibility="uncounted"}
+
+-   Operadores Relacionais:
+    -   Igual a (`==`);
+    -   Diferente de (`!=`);
+    -   Maior que (`>`);
+    -   Menor que (`<`);
+    -   Maior ou igual a (`>=`);
+    -   Menor ou igual a (`<=`);
+    -   Pertence a (`%in%`).
+
+## Estrutura condicional {.center}
+
+O `if` é uma estrutura condicional que permite executar um bloco de código se uma condição for verdadeira. O `else` é opcional e permite executar um bloco de código alternativo se a condição do `if` for falsa.
+
+::: fragment
+::: {style="text-align: center;"}
+![](images/function_schema.png){height="450"}
+:::
+:::
+
+## if/else/else if {.center}
+
+::: fragment
+O `if`…`else` permite criar dois blocos de código:
+
+```{r, results='hide'}
+#| code-line-numbers: "|3-4"
+x <- 10
+
+if(x > 0){
+  print("Número não negativo")
+} else {
+  print("Número negativo")
+}
+
+```
+:::
+
+::: fragment
+Use o `else if` para testar várias condições em sequência.
+
+```{r, results='hide'}
+#| code-line-numbers: "|5-6"
+x <- 0
+
+if (x > 0) {
+  print("x é um número positivo")
+} else if (x < 0) {
+  print("x é um número negativo")
+} else {
+  print("x é zero")
+}
+
+```
+:::
+
+## Uso de operadores lógicos em condicionais {.center}
+
+Os operadores lógicos são amplamente usados em estruturas condicionais, como `if`, `else` e `while`.
+
+::: fragment
+```{r, results='hide'}
+# Usando operadores lógicos em condicionais
+x <- 10
+y <- 5
+
+# Condicional if
+if (x > y && y > 0) {
+  print("x é maior que y e y é positivo")
+}
+
+# Condicional if-else
+if (x < y || y < 0) {
+  print("x é menor que y ou y é negativo")
+} else {
+  print("Nenhuma das condições foi satisfeita")
+}
+
+```
+:::
+
+## Loop {.center}
+
+Estruturas de repetição, ou `loops`, são fundamentais na programação para executar um bloco de código várias vezes.
+
+-   Estrutura `for`
+
+::: fragment
+```{r}
+for (i in 1:5) {
+  print(i)
+}
+```
+:::
+
+## Loop {.center visibility="uncounted"}
+
+-   Estrutura `while`
+
+::: fragment
+```{r}
+# Inicializando uma variável
+contador <- 1
+
+# Loop while para iterar até que a condição seja falsa
+while (contador <= 5) {
+  print(contador)
+  contador <- contador + 1
+}
+```
+:::
+
+## Loop {.center visibility="uncounted"}
+
+-   Estrutura `repeat`
+
+::: fragment
+```{r}
+# Inicializando uma variável
+contador <- 1
+
+# Loop repeat
+repeat {
+  print(contador)
+  contador <- contador + 1
+  if (contador > 5) {
+    break
+  }
+}
+```
+:::
+
+## Condições vetorizadas {.center}
+
+O `ifelse` é uma função fundamental no R que permite aplicar condições de forma vetorizada, ou seja, para cada elemento de um vetor, aplica-se uma decisão baseada em uma condição lógica.
+
+::: fragment
+```{r}
+x <- factor(sample(letters[1:5], 10, replace = TRUE))
+
+y <- ifelse(x %in% c("a", "b", "c"), x, NA)
+
+y
+```
+:::
+
+::: fragment
+Tem-se o `if_else` do pacote `dplyr` como alternativa ao `ifelse` do pacote base do R.
+
+```{r}
+y2 <- if_else(x %in% c("a", "b", "c"), x, NA)
+
+y2
+```
+:::
+
+## Diferenças entre ifelse e if_else {.center}
+
+-   `ifelse`
+    -   Funciona bem para vetores simples, mas **pode causar problemas de coerção de tipos e eficiência em grandes conjuntos de dados** ou quando esses tipos são mistos, como mostrado no primeiro exemplo.
+-   `if_else`
+    -   É mais seguro para uso em *data frames*, mantendo a coerência dos tipos de dados e **evitando problemas de coerção**, como mostrado no segundo exemplo.
+
+# IV - Funções
+
+## O que são funções? {.center}
+
+Uma função é um conjunto de instruções que recebe entradas (argumentos), realiza operações específicas e retorna uma saída (valor de retorno).
+
+::: fragment
+::: {style="text-align: center;"}
+![](images/r-function-syntax.webp){height="450"}
+:::
+:::
+
+## Funções com condicionais {.center}
+
+::: {.fragment .fade-in-then-semi-out}
+A seguir, iremos criar uma função em R para calcular o Índice de Massa Corporal (IMC) e determinar a faixa de peso (abaixo do peso, peso normal, ou acima do peso) utilizando estruturas condicionais (`if`, `else if`, `else`).
+:::
+
+::: fragment
+O IMC é calculado pela fórmula:
+
+$$ \text{IMC} = \frac{\text{peso}}{\text{altura}^2} $$
+:::
+
+::: fragment
+Neste caso, $peso$ é o peso da pessoa em quilogramas, e $altura$ é a altura em metros.
+:::
+
+## Funções com condicionais {.center visibility="uncounted"}
+
+Definindo a Função `calculo_imc`:
+
+::: fragment
+```{r}
+#| code-line-numbers: "|3-4|7|9-14|"
+calculo_imc <- function(peso, altura) {
+  # Verifica se peso ou altura são NA
+  if (is.na(peso) | is.na(altura)) {
+    return(NA)
+  }
+  # Calcula o IMC
+  imc <- peso / (altura^2)
+  # Avalia o IMC e retorna a faixa de peso correspondente
+  if (imc < 18.5) {
+    return("Abaixo do peso")
+  } else if (imc < 25) {
+    return("Peso normal")
+  } else {
+    return("Acima do peso")
+  }
+}
+```
+:::
+
+## Funções com condicionais {.center visibility="uncounted"}
+
+E então, podemos utilizá-la com base nos valores dos vetores `altura` e `peso`.
+
+::: fragment
+```{r}
+# Definindo o peso e a altura
+peso <- 70
+altura <- 1.68
+
+# Calculando o IMC
+imc <- calculo_imc(peso, altura)
+
+imc
+```
+:::
+
+## Como aplicar funções aos dados? {.center}
+
+Primeiramente, iremos instalar o pacote `dados`, que oferece uma versão traduzida dos conjuntos de dados listados, facilitando o acesso e a compreensão para usuários que preferem ou necessitam de informações em português.
+
+::: fragment
+```{r, eval=FALSE}
+# Instalar e carregar o pacote dados (se ainda não estiver instalado)
+install.packages("dados")
+
+library(dados)
+```
+:::
+
+::: fragment
+```{r}
+# Armazenando dados_stars
+dados <- dados::dados_starwars |> 
+          dplyr::select(1:5) 
+```
+
+```{r, echo=FALSE}
+head(dados, 5)
+```
+:::
+
+## Como aplicar funções aos dados? {.center visibility="uncounted"}
+
+Neste caso, aplicaremos a função `calculo_imc` ao conjunto `dados_starwars`. Porém, será necessário tornar a altura dos personagens, que está em centímetros, em metros.
+
+::: fragment
+```{r}
+dados$altura <- dados$altura / 100 
+```
+:::
+
+::: fragment
+Vamos usar `mapply` para aplicar a função `calculo_imc` as colunas de `massa` e `altura` de `dados`.
+
+```{r}
+dados$categoria_imc <- mapply(calculo_imc, dados$massa, dados$altura)
+```
+
+```{r, echo=FALSE}
+head(dados, 5)
+```
+:::
+
+# V - Análise Estatística
+
+## Operações estatísticas {.center visibility="uncounted"}
+
+O R possui uma ampla gama de funções estatísticas, tais como média, mediana, variância, desvio padrão, e outros.
+
+::: fragment
+```{r}
+# Soma
+sum(a)
+
+# Média
+mean(a)
+
+# Mediana
+median(a)
+
+# Variância
+var(a)
+
+# Desvio padrão
+sd(a)
+```
+:::
+
+## Operações estatísticas {.center visibility="uncounted"}
+
+```{r}
+# Quartis
+quantile(a)
+
+# Produto
+prod(a)
+
+# Mínimo e máximo
+min(a)
+max(a)
+
+# Intervalo 
+range(a)
+```
+
+## Resumo estatístico {.center}
+
+O R possui uma função integrada chamada `summary`, que é usada para gerar um resumo estatístico básico de diferentes tipos de objetos, **incluindo vetores, data frames e listas**.
+
+```{r}
+summary(dados)
+```
+
+## Histograma {.center}
+
+As funções básicas do R também fornecem visualizações de distribuição das variáveis.
+
+::: fragment
+```{r, fig.align='center', fig.width=7, fig.height=4.5}
+hist(mtcars$mpg, breaks = 10, col = "lightblue3", main = "Histograma de MPG", xlab = "MPG", ylab = "Frequência")
+```
+:::
+
+## Boxplot {.center}
+
+As funções básicas do R também fornecem visualizações de distribuição das variáveis.
+
+::: fragment
+```{r, fig.align='center', fig.width=8, fig.height=5}
+boxplot(mtcars$mpg, main = "Boxplot de MPG", ylab = "MPG", col = "lightblue")
+```
+:::
+
+# VI - Visualização de Dados
+
+## Introdução ao ggplot2 {.center}
+
+::: {.fragment .fade-in-then-semi-out}
+O `ggplot2` é um dos pacotes mais populares para visualização de dados no R, criado por Hadley Wickham. Ele implementa a gramática de gráficos, permitindo a criação de **visualizações complexas de forma intuitiva e flexível**.
+:::
+
+::: fragment
+::: columns
+::: {.column width="50%"}
+A gramática de gráficos (*Grammar of Graphics*) é um conceito que descreve e constrói gráficos através de componentes básicos.
+:::
+
+::: {.column width="50%"}
+![](images/ggplot_logo.jpg){.absolute height="450"}
+:::
+:::
+:::
+
+## Princípios básicos do ggplot2 {.center}
+
+::: columns
+::: {.column width="50%"}
+-   **Data**:
+    -   O primeiro passo na construção de um gráfico é fornecer os dados.
+-   **Aesthetics** (`aes`):
+    -   Especifica como os dados são mapeados visualmente
+-   **Geometries** (`geoms`):
+    -   Define o tipo de gráfico a ser criado, como pontos, barras, linhas, caixas, etc.
+:::
+
+::: {.column width="50%"}
+-   **Facets**:
+    -   Permite dividir os dados em subgráficos baseados em uma ou mais variáveis.
+-   **Scales**:
+    -   Controla a mapeamento das variáveis para as estéticas, incluindo eixos e legendas.
+-   **Themes**:
+    -   Modifica a aparência geral do gráfico, como cores de fundo, fontes, etc.
+:::
+:::
+
+## Princípios básicos do ggplot2 {.center visibility="uncounted"}
+
+::: {style="text-align: center; margin-top: 1em"}
+![](images/ggplot-grammar-of-graphics.png){.border .shadow-border height="500"}
+:::
+
+## Processo de camada (layers) {.center}
+
+No `ggplot2`, é possível desenvolver gráficos camada por camada. Cada camada adiciona novos elementos ou modifica os existentes. A seguir, utilizaremos a base `mtcars`.
+
+## Camada de Dados e Aesthetics {.center}
+
+```{r}
+p <- ggplot(data = mtcars, aes(x = wt, y = mpg))
+```
+
+```{r, echo=FALSE, fig.align='center'}
+p
+```
+
+## Camada de Geometria {.center}
+
+```{r}
+p <- p + geom_point()
+```
+
+```{r, echo=FALSE, fig.align='center'}
+p
+```
+
+## Camada de Facets (Opcional) {.center}
+
+```{r}
+p <- p + facet_wrap(~ cyl)
+```
+
+```{r, echo=FALSE, fig.align='center'}
+p
+```
+
+## Camada de Facets (Opcional) {.center}
+
+```{r}
+p <- p + scale_x_continuous(breaks = seq(0, 6, by = 1))
+```
+
+```{r, echo=FALSE, fig.align='center'}
+p
+```
+
+## Camada de Themes (Opcional) {.center}
+
+```{r}
+p <- p + theme_minimal()
+```
+
+```{r, echo=FALSE, fig.align='center'}
+p
+```
+
+## ggsave {.center}
+
+Para gráficos gerados com `ggplot2`, podemos salvá-los em formato *png*, *jpeg* e *pdf*. Neste caso, salvaremos nesses 3 formatos diretamente para a pasta `figuras`.
+
+```{r, eval=FALSE}
+# Salvar em PNG
+ggsave("figuras/figura1.png", plot = p, width = 6, height = 4, dpi = 300)
+
+# Salvar em JPEG
+ggsave("figuras/figura2.jpeg", plot = p, width = 6, height = 4)
+
+# Salvar em PDF
+ggsave("figuras/figura2.pdf", plot = p, width = 6, height = 4)
+```
