@@ -92,7 +92,7 @@ Necessário realizar **login** (através de uma conta Google, Github, entre outr
 :::
 
 ::: {.column width="50%"}
-![](images/rstudio_cloud.png){.absolute .border .shadow-border height="300"}
+![](images/rstudio_cloud.png){.absolute .border .shadow-border height="300" width="600"}
 :::
 :::
 
