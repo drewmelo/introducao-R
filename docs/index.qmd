@@ -2,6 +2,7 @@
 title: |
   <div style="display: flex; align-items: center;">
     Introdução ao <img src="logo/r_logo.png" style="margin-left: -30px; height: 125px; margin-bottom: -20px;">
+    <object data="images/qrcode.svg" type="image/svg+xml" style="margin-left: 650px; height: 350px; position: absolute; top: 150px; right: 0;"></object>
   </div>
 author: "André Vitor Pereira de Melo"
 subtitle: "Universidade Federal do Delta do Parnaíba"
