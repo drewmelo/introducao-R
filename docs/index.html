@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.551">
 
   <meta name="author" content="André Vitor Pereira de Melo">
-  <title>quarto-inputd76f8d53</title>
+  <title>quarto-input8116c06e</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -1082,20 +1082,6 @@ Necessário realizar <strong>login</strong> (através de uma conta Google, Githu
 </div>
 </div>
 </div>
-</section>
-<section id="exercício-de-fixação-2" class="slide level2 center">
-<h2>Exercício de Fixação 2</h2>
-<ul>
-<li class="fragment">Considere os dados a seguir para cinco funcionários de uma empresa:
-<ul>
-<li class="fragment">Nome: Ana, João, Luna, Pedro, Sofia</li>
-<li class="fragment">Idade: 28, 32, 25, 29, 31</li>
-<li class="fragment">Salário: 3500, 3800, 3200, 4000, 3700</li>
-</ul></li>
-</ul>
-<div class="fragment">
-<p>A partir dessas informações, crie um data frame chamado <code>funcionarios</code> e adicione uma nova coluna chamada <code>bonus</code> que representa o bônus de cada funcionário, sendo 5% do salário.</p>
-</div>
 </section></section>
 <section>
 <section id="iii---estrutura-de-condição-e-repetição" class="title-slide slide level1 center">
@@ -1279,7 +1265,7 @@ Necessário realizar <strong>login</strong> (através de uma conta Google, Githu
 <span id="cb74-4"><a href=""></a></span>
 <span id="cb74-5"><a href=""></a>y</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  1  1 NA NA NA  1  3  2 NA NA</code></pre>
+<pre><code> [1] NA  2  1 NA NA  1  1 NA  1 NA</code></pre>
 </div>
 </div>
 </div>
@@ -1290,8 +1276,8 @@ Necessário realizar <strong>login</strong> (através de uma conta Google, Githu
 <span id="cb76-2"><a href=""></a></span>
 <span id="cb76-3"><a href=""></a>y2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] a    a    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; a    c    b    &lt;NA&gt; &lt;NA&gt;
-Levels: a b c d e</code></pre>
+<pre><code> [1] &lt;NA&gt; b    a    &lt;NA&gt; &lt;NA&gt; a    a    &lt;NA&gt; a    &lt;NA&gt;
+Levels: a b d e</code></pre>
 </div>
 </div>
 </div>
@@ -1707,7 +1693,7 @@ Levels: a b c d e</code></pre>
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-'controlsAuto': true,
+'controlsAuto': false,
 'previewLinksAuto': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
@@ -1717,7 +1703,7 @@ Levels: a b c d e</code></pre>
 'smaller': true,
  
         // Display controls in the bottom right corner
-        controls: false,
+        controls: true,
 
         // Help the user learn the controls by providing hints, for example by
         // bouncing the down arrow when they first encounter a vertical slide

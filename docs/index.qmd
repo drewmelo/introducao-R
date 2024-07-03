@@ -15,6 +15,7 @@ format:
     logo: logo/ufdpar_logo.png
     footer: "[https://github.com/drewmelo/introducao-R](https://github.com/drewmelo/introducao-R)"
     slide-number: true
+    controls: true
     smaller: true
     scrollable: false
     incremental: true
@@ -622,17 +623,6 @@ C <- c(NA, 8L, F, "a", 2i)
 ```{r, echo=FALSE}
 class(C)
 ```
-:::
-
-## Exercício de Fixação 2 {.center}
-
--   Considere os dados a seguir para cinco funcionários de uma empresa:
-    -   Nome: Ana, João, Luna, Pedro, Sofia
-    -   Idade: 28, 32, 25, 29, 31
-    -   Salário: 3500, 3800, 3200, 4000, 3700
-
-::: fragment
-A partir dessas informações, crie um data frame chamado `funcionarios` e adicione uma nova coluna chamada `bonus` que representa o bônus de cada funcionário, sendo 5% do salário.
 :::
 
 # III - Estrutura de Condição e Repetição
