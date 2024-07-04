@@ -29,5 +29,5 @@ Os slides do curso podem ser acessados [aqui](https://drewmelo.github.io/introdu
 Para clonar este repositório localmente, utilize o seguinte comando Git:
 
 ```sh
-   git clone https://github.com/drewmelo/introducao-R.git
+git clone https://github.com/drewmelo/introducao-R.git
 ```

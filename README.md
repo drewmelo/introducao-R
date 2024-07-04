@@ -1,4 +1,4 @@
-Introdução ao R para Ciências Econômicas
+Introdução ao R
 ================
 
 ## Resumo
@@ -28,5 +28,5 @@ Os slides do curso podem ser acessados
 Para clonar este repositório localmente, utilize o seguinte comando Git:
 
 ``` sh
-   git clone https://github.com/drewmelo/introducao-R.git
+git clone https://github.com/drewmelo/introducao-R.git
 ```

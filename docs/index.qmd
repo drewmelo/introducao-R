@@ -31,7 +31,7 @@ editor: visual
 Para clonar o repositório que contém os materiais utilizados nos minicursos "Introdução ao R" e "Práticas no R" localmente, utilize o seguinte comando Git:
 
 ```sh
-   git clone https://github.com/drewmelo/introducao-R.git
+git clone https://github.com/drewmelo/introducao-R.git
 ```
 
 # I - Introdução Geral
