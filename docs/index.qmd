@@ -26,6 +26,14 @@ format:
 editor: visual
 ---
 
+## Repositório {.center}
+
+Para clonar o repositório que contém os materiais utilizados nos minicursos "Introdução ao R" e "Práticas no R" localmente, utilize o seguinte comando Git:
+
+```sh
+   git clone https://github.com/drewmelo/introducao-R.git
+```
+
 # I - Introdução Geral
 
 ## O que é a linguagem R? {.center .nonincremental}
@@ -56,11 +64,11 @@ editor: visual
 ::: columns
 ::: {.column width="50%"}
 ::: {.fragment .fade-in-then-semi-out}
-Visite [CRAN - The Comprehensive R Archive Network](https://cran.r-project.org/bin/windows/base/R-4.4.1-win.exe) e baixe a linguagem, através de um arquivo executável, para seu sistema operacional;
+Visite [CRAN - The Comprehensive R Archive Network](https://cran.rstudio.com/) e baixe a linguagem, através de um arquivo executável, para seu sistema operacional;
 :::
 
 ::: {.fragment .fade-in-then-semi-out}
-Visite [RStudio Desktop](https://download1.rstudio.org/electron/windows/RStudio-2024.04.2-764.exe) e baixe o instalador para seu sistema operacional;
+Visite [RStudio Desktop](https://posit.co/download/rstudio-desktop/) e baixe o instalador para seu sistema operacional;
 :::
 
 ::: {.fragment .fade-in}
