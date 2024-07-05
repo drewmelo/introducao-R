@@ -6,7 +6,7 @@ title: |
   </div>
 author: "André Vitor Pereira de Melo"
 subtitle: "Universidade Federal do Delta do Parnaíba"
-date: today
+date: "2024-07-05"
 date-format: long
 lang: pt-BR
 format: 
@@ -30,7 +30,7 @@ editor: visual
 
 Para clonar o repositório que contém os materiais utilizados nos minicursos "Introdução ao R" e "Práticas no R" localmente, utilize o seguinte comando Git:
 
-```sh
+``` sh
 git clone https://github.com/drewmelo/introducao-R.git
 ```
 
@@ -514,6 +514,7 @@ lista <- list(
             hobbies = c("Leitura", "Esportes", "Música"),
             matriz = matrix(1:9, nrow = 3, dimnames = list(c('A', 'B', 'C'),
                                                            c('A', 'B', 'C'))),
+            matriz_empilhada = array(c(1:12), dim = c(2, 3, 2)),
             cars = head(cars, 5),
             mtcars = head(mtcars, 5)
           )
@@ -556,7 +557,7 @@ write.table(dados, file = "dados/dados.txt", sep = "\t", row.names = FALSE)
 ```
 :::
 
-## Exportação de dados {.center}
+## Importação de dados {.center}
 
 Neste caso, ao importar dados no R, estaremos carregando conjuntos de dados externos para análise, manipulação e visualização.
 

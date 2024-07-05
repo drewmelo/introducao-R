@@ -1,0 +1,88 @@
+---
+title: "Atividade"
+author: "Introdução ao R"
+date: "2024-07-05"
+date-format: long
+lang: pt-BR
+format: 
+      pdf:
+        mainfont: Times New Roman
+        number-depth: 3
+        fig-pos: 'H'
+editor: visual
+---
+
+# Exercício 1
+
+Considere os dados a seguir para cinco funcionários de uma empresa:
+
+-   Nome: Ana, João, Luna, Pedro, Sofia
+-   Idade: 28, 32, 25, 29, 31
+-   Salário: 3500, 3800, 3200, 4000, 3700
+
+A partir dessas informações, crie um data frame chamado `funcionarios` e adicione uma nova coluna chamada `bonus` que representa o bônus de cada funcionário, sendo 5% do salário.
+
+# Exercício 2
+
+1.  **Análise de Vendas:**
+
+No vetor a seguir, denominado `vendas`, que ontém o número de produtos vendidos por uma empresa nos últimos seis meses:
+
+```{r}
+vendas <- c(120, 150, 170, 130, 160, 140)
+```
+
+(a) Verifique se todas as vendas mensais foram acima de 100 unidades.
+
+(b) Adicione 10 unidades a cada mês devido a um ajuste de inventário e exiba o novo vetor de vendas.
+
+<!-- -->
+
+2.  **Dados de Pesquisa:**
+
+Uma lista contém os resultados de uma pesquisa sobre hábitos de leitura:
+
+```{r}
+pesquisa <- list(
+  participantes = c("Alice", "Bob", "Catherine", "David"),
+  livros_lidos = c(5, 3, 8, 2),
+  tempo_diario = c(30, 20, 45, 15)  # em minutos
+)
+```
+
+(a) Calcule o tempo total gasto em leitura por cada participante no mês (considerando 30 dias).
+
+(b) Adicione uma nova entrada à lista que indique se o participante leu mais de 5 livros.
+
+# Exercício 3
+
+Neste exercício, exploramos um conjunto de dados fictício que contém informações sobre altura, massa, nome, idade e curso acadêmico de 10 indivíduos. A tabela abaixo resume esses dados:
+
+$$
+\begin{array}{|c|c|c|c|c|}
+\hline
+\text{\textbf{Nome}} & \text{\textbf{Idade}} & \text{\textbf{Altura (cm)}} & \text{\textbf{Massa (kg)}} & \text{\textbf{Curso}} \\
+\hline
+\text{João} & 22 & 175 & 70 & \text{Economia} \\
+\text{Lucas} & 25 & 163 & 60 & \text{Contabilidade} \\
+\text{Pedro} & 23 & 180 & 75 & \text{Administração} \\
+\text{Ana} & 24 & 168 & 65 & \text{Economia} \\
+\text{Carlos} & 21 & 172 & 68 & \text{Administração} \\
+\text{Lúcia} & 22 & 165 & 62 & \text{Contabilidade} \\
+\text{Miguel} & 23 & 178 & 77 & \text{Economia} \\
+\text{Sara} & 24 & 170 & 63 & \text{Administração} \\
+\text{Rafael} & 22 & 173 & 72 & \text{Contabilidade} \\
+\text{Juliana} & 23 & 169 & 66 & \text{Economia} \\
+\hline
+\end{array}
+$$
+
+(a) Crie um data frame no R, no formato *tibble*, utilizando os valores fornecidos na tabela acima. O data frame deve conter as colunas: `nome`, `idade`, `altura`, `massa` e `curso`.
+
+(b) Agrupe as alturas dos indivíduos de cada curso (Economia, Contabilidade, Administração) e, em seguida, calcule a média de altura por curso acadêmico. Apresente os resultados em um objeto.
+
+(c) Descreva a distribuição de idades dos indivíduos na amostra. Utilize medidas de tendência central e dispersão.
+
+(d) Calcule o IMC (Índice de Massa Corporal) para cada indivíduo e classifique-os de acordo com as faixas de peso (Abaixo do peso, Peso normal, Acima do peso). Instrução: Realize esta operação em uma nova coluna aos dados.
+
+(e) Com base nos resultados obtidos em (d), transforme-os em uma variável categórica (`factor`) seguindo a seguinte ordem: Abaixo do peso \< Peso normal \< Acima do peso.
