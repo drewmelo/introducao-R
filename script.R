@@ -16,6 +16,7 @@ library(tidyverse)
 
 ?dplyr::arrange
 ?dplyr
+?rbcb
 
 # Vetores -----------------------------------------------------------------
 # Vetor numérico (inteiro)
@@ -548,9 +549,152 @@ hist(dados$altura, breaks = 10, col = "lightblue3", main = "Histograma de Altura
 boxplot(dados$massa, main = "Boxplot de Massa", ylab = "Massa (kg)", col = "lightblue")
 
 
+# Recapitulando -----------------------------------------------------------
+
+a <- c(T, T, F)
+b <- c(T, T, T)
+
+a == b
+
+a <- c(1, 1, 1)
+b <- c(1, 1, 1)
+
+a == b
+
+# Continuação de funções --------------------------------------------------
+
+install.packages("dados")
+
+library(dados)
+
+dados <- dados::dados_starwars |>
+  select(1:5)
+
+calculo_imc <- function(peso, altura) {
+  # Imprimir um valor de erro
+  if (peso <= 0) {
+    stop("O peso deve ser um valor positivo")
+  }
+  if (altura <= 0) {
+    stop("Altura deve ser um valor positivo")
+  }
+
+  # Calcular o IMC
+  imc <- peso / (altura)^2
+
+  # Determinar as categorias do IMC
+  categorias <- if_else(imc < 18.5, true = "Abaixo do peso",
+                        if_else(imc <= 25, true = "Peso normal",
+                                if_else(imc > 25, true = "Peso normal", false = "Desconhecido") ) )
+  return(list(valor_imc = round(imc, digits = 2), categoria = categorias))
+}
+
+dados2$altura_metros_rbase <- dados2$altura / 100
+
+dados2 <- dados |>
+  mutate(altura_categoria = if_else(altura > 180, true = "Alto", "Baixo ou Médio"),
+         altura_metros = altura / 100,
+         altura_metros_fator = factor(altura_categoria, levels = c("Baixo ou Médio", "Alto"),
+                                      labels = c("Baixo ou Médio", "Alto"),
+                                      ordered = T)) |>
+  arrange(desc(altura_metros_fator))
+
+peso <- 70
+altura <- 1.68
+
+resultado <- calculo_imc(peso, altura)
+
+# ANÁLISE ESTATÍSTICA -----------------------------------------------------
+med <- mean(dados$altura, na.rm = T)
+
+var <- var(dados$altura, na.rm = T)
+
+dp <- sd(dados$altura, na.rm = T)
+
+resumo_estatistico <- function(df, coluna) {
+  media <- mean(df[[coluna]], na.rm = T)
+  soma <- sum(df[[coluna]], na.rm = T)
+  variancia <- var(df[[coluna]], na.rm = T)
+  desvio_padrao <- var(df[[coluna]], na.rm = T)
+
+  return(tibble(
+    media = media,
+    soma = soma,
+    variancia = variancia,
+    desvio_padrao = desvio_padrao
+  ))
+}
+
+resultado_estatistica <- resumo_estatistico(dados, "altura")
+
+dplyr::group_by()
+dplyr::select()
+
+# VISUALIZAÇÃO DE DADOS ---------------------------------------------------
+
+hist(mtcars$mpg, breaks = 5, col = "lightblue3", main = "Histograma de MPG",
+     xlab = "MPG", ylab = "Frequência")
+
+# Utilizando o ggplot2
+
+mtcars |>
+  ggplot() +
+  geom_histogram(aes(x = mpg))
+
+ggplot(data = dados, aes(x = altura, y = massa)) +
+  geom_point() +
+  geom_line()
+
+# Outra forma
+ggplot(data = dados2) +
+  geom_point(aes(x = altura, y = massa))
+
 # Links -------------------------------------------------------------------
 # Banco Central do Brasil
 "https://www3.bcb.gov.br/sgspub/localizarseries/localizarSeries.do?method=prepararTelaLocalizarSeries"
 
 # Inflação
 "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html?=&t=series-historicas"
+
+install.packages("rbcb")
+install.packages("zoo")
+
+library(rbcb)
+library(zoo)
+
+ipca <- rbcb::get_series(code = "433", start_date = "2000-01-01") |>
+  rename(ipca = `433`)
+
+class(ipca$date)
+
+install.packages("scales")
+library(scales)
+
+install.packages("devtools")
+
+devtools::install_github("drewmelo/beautyxtrar", force = T)
+library(beautyxtrar)
+
+
+# GRÁFICO DO IPCA ---------------------------------------------------------
+
+ipca_acumulado <- ipca |>
+  mutate(acumulado_doze_meses = zoo::rollapply(ipca, 12,
+                                               function(x)
+                                                 (prod(1 + x / 100) - 1) * 100, # Referência: Análise macro
+                                                 fill = NA,
+                                                 align = "right"),
+         acumulado_doze_meses = round(acumulado_doze_meses, digits = 2)
+         ) |>
+  tidyr::drop_na()
+
+p <- ipca_acumulado |>
+  ggplot(aes(x = date, y = acumulado_doze_meses)) +
+  geom_line(linewidth = 1.1, col = "coral3") +
+  scale_x_date(breaks = "2 year",
+               labels = scales::label_date(format = "%Y")) +
+  labs(x = "Ano", y = "Variação Doze Meses [%]") +
+  beautyxtrar::theme_xtra()
+
+ggsave(filename ="figuras/figura1.png", plot = p,
+       width = 16, height = 9, dpi = 300)
