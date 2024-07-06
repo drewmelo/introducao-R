@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.551">
 
   <meta name="author" content="André Vitor Pereira de Melo">
-  <title>quarto-inpute58097e2</title>
+  <title>quarto-input366beb45</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -1005,7 +1005,10 @@ Necessário realizar <strong>login</strong> (através de uma conta Google, Githu
 <p><strong>2.</strong> Exportando para Excel (<em>xlsx</em>)</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a><span class="fu">write.xlsx</span>(dados, <span class="at">file =</span> <span class="st">"dados/dados.xlsx"</span>, <span class="at">rowNames =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a><span class="co"># Ativando pacote</span></span>
+<span id="cb55-2"><a href=""></a><span class="fu">library</span>(openxlsx) <span class="co"># Necessário instalar</span></span>
+<span id="cb55-3"><a href=""></a></span>
+<span id="cb55-4"><a href=""></a><span class="fu">write.xlsx</span>(dados, <span class="at">file =</span> <span class="st">"dados/dados.xlsx"</span>, <span class="at">rowNames =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p><strong>3.</strong> Exportando para Texto (<em>txt</em>)</p>
@@ -1028,7 +1031,7 @@ Necessário realizar <strong>login</strong> (através de uma conta Google, Githu
 <div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href=""></a><span class="co"># Ativando o pacote</span></span>
-<span id="cb58-2"><a href=""></a><span class="fu">library</span>(readxl)</span>
+<span id="cb58-2"><a href=""></a><span class="fu">library</span>(readxl) <span class="co"># Necessário instalar</span></span>
 <span id="cb58-3"><a href=""></a></span>
 <span id="cb58-4"><a href=""></a>readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"dados/dados.xlsx"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1271,7 +1274,7 @@ Necessário realizar <strong>login</strong> (através de uma conta Google, Githu
 <span id="cb75-4"><a href=""></a></span>
 <span id="cb75-5"><a href=""></a>y</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  3 NA  2  3 NA  1  2 NA  3  2</code></pre>
+<pre><code> [1] NA  3  1 NA NA  1 NA NA  2  1</code></pre>
 </div>
 </div>
 </div>
@@ -1282,7 +1285,7 @@ Necessário realizar <strong>login</strong> (através de uma conta Google, Githu
 <span id="cb77-2"><a href=""></a></span>
 <span id="cb77-3"><a href=""></a>y2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] c    &lt;NA&gt; b    c    &lt;NA&gt; a    b    &lt;NA&gt; c    b   
+<pre><code> [1] &lt;NA&gt; c    a    &lt;NA&gt; &lt;NA&gt; a    &lt;NA&gt; &lt;NA&gt; b    a   
 Levels: a b c d e</code></pre>
 </div>
 </div>
@@ -1668,6 +1671,11 @@ Levels: a b c d e</code></pre>
 <span id="cb117-7"><a href=""></a><span class="co"># Salvar em PDF</span></span>
 <span id="cb117-8"><a href=""></a><span class="fu">ggsave</span>(<span class="st">"figuras/figura2.pdf"</span>, <span class="at">plot =</span> p, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">4</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="referências" class="slide level2 center">
+<h2>Referências</h2>
+<p>Wickham, H., Çetinkaya-Rundel, M., &amp; Grolemund, G. (2023). <a href="https://books.google.com.br/books?hl=pt-BR&amp;lr=&amp;id=TiLEEAAAQBAJ&amp;oi=fnd&amp;pg=PT9&amp;dq=R+for+data+science&amp;ots=ZJqXgeqMwN&amp;sig=hYcQX3QSQfj0UYOztKA-ZnQO24Y&amp;redir_esc=y#v=onepage&amp;q=R%20for%20data%20science&amp;f=false"><strong>R for data science</strong></a>. ” O’Reilly Media, Inc.”.</p>
+<p>Wickham, H. (2016). <a href="https://doi.org/10.1007/978-3-319-24277-4"><strong>ggplot2: Elegant Graphics for Data Analysis</strong></a> (2ª ed.). Springer Cham.</p>
 <div class="quarto-auto-generated-content">
 <p><img src="logo/ufdpar_logo.png" class="slide-logo"></p>
 <div class="footer footer-default">

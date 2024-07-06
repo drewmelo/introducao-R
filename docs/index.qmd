@@ -545,6 +545,9 @@ write.csv(dados, file = "dados/dados.csv", row.names = FALSE)
 
 ::: fragment
 ```{r, eval=FALSE}
+# Ativando pacote
+library(openxlsx) # Necessário instalar
+
 write.xlsx(dados, file = "dados/dados.xlsx", rowNames = FALSE)
 ```
 :::
@@ -574,7 +577,7 @@ readr::read_csv(file = "dados/dados.csv")
 ::: fragment
 ```{r, eval=FALSE}
 # Ativando o pacote
-library(readxl)
+library(readxl) # Necessário instalar
 
 readxl::read_excel(path = "dados/dados.xlsx")
 ```
@@ -1117,3 +1120,9 @@ ggsave("figuras/figura2.jpeg", plot = p, width = 6, height = 4)
 # Salvar em PDF
 ggsave("figuras/figura2.pdf", plot = p, width = 6, height = 4)
 ```
+
+## Referências {.center}
+
+Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). [**R for data science**](https://books.google.com.br/books?hl=pt-BR&lr=&id=TiLEEAAAQBAJ&oi=fnd&pg=PT9&dq=R+for+data+science&ots=ZJqXgeqMwN&sig=hYcQX3QSQfj0UYOztKA-ZnQO24Y&redir_esc=y#v=onepage&q=R%20for%20data%20science&f=false). " O'Reilly Media, Inc.".
+
+Wickham, H. (2016). [**ggplot2: Elegant Graphics for Data Analysis**](https://doi.org/10.1007/978-3-319-24277-4) (2ª ed.). Springer Cham.
